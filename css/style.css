@@ -14,6 +14,10 @@ header {
   background: 0pc;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   background-color: white;
+  z-index: 999;
+  position: sticky;
+  left: 0;
+  top: 0;
 }
 #Signature {
   font-family: "Peralta", cursive;
@@ -71,7 +75,6 @@ header {
 }
 
 embed-responsive {
-  position: relative;
   width: 100%;
 }
 .embed-responsive-item {
@@ -95,4 +98,63 @@ embed-responsive {
   font-size: 18px;
   font-weight: 600;
   color: #1a1a1a;
+}
+.clothes-sale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 90px;
+  position: relative;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.clothes-sale::after,
+.clothes-sale::before {
+  --angle: 0deg;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 70%,
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095
+  );
+  top: 50%;
+  left: 50%;
+  /* left: 100px; */
+  translate: -50% -50%;
+  z-index: -10;
+  padding: 3px;
+  animation: 3s spin linear infinite;
+}
+.clothes-sale::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+.clothes-sale div {
+  width: 20%;
+}
+.clothes-sale div img {
+  width: 100%;
+}
+.sale {
+  margin: 50px 0px;
+}
+.sale h2 {
+  text-align: center;
 }
